@@ -12,7 +12,7 @@ const ToDoList = () => {
     const [tasks, setTasks] = useState (['Tarea 01', 'Tarea 02', 'Tarea 03'])
 
     function oprimioEnter (e) {
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13 || e.key === "Enter") {
             addTask()
             setInput("")
         }
@@ -21,15 +21,41 @@ const ToDoList = () => {
 
     return (
         <>
-            <h1>To-Do List</h1>
-            <div>{tasks.map((tarea, index) => <p key={index}> {tarea} </p>)}</div>
+            <div className="container py-5">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-8 col-lg-6">
+                        <div className="card shadow-sm">
+                            <div className="card-body p-4">
+                                <div className="d-flex align-items-center justify-content-between mb-3">
+                                    <h1 className="h3 mb-0">To-Do List</h1>
+                                </div>
 
-            <input className="form-control my-3" type="text" onKeyDown={oprimioEnter} placeholder="Nueva Tarea" value={input} onChange={ (e) => {
-             console.log(e.target.value)
-             setInput(e.target.value)
-            }} ></input>
+                            <div className="input-group mb-3">
+                                <input className="form-control" type="text" placeholder="Nueva tarea" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={oprimioEnter} />
+                            </div>
 
-            <p>Total de tareas: {tasks.length}</p>
+                            <ul className="list-group">
+                                {tasks.map((tarea, index) => (
+                                <li key={index} className="list-group-item d-flex align-items-center justify-content-between">
+                                    
+                                    <span className="d-flex align-items-center gap-2"> <span className="badge text-bg-light border">#{index + 1} </span> { tarea }</span>
+
+                                </li>
+                                ))}
+                            </ul>
+
+                            </div>
+
+                            <div className="card-footer bg-body-tertiary d-flex justify-content-between">
+
+                                <span className="text-secondary small"> Enter para agregar </span>
+                                <span className="text-secondary small"> Total: <strong>{ tasks.length }</strong> </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
