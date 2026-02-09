@@ -2,23 +2,36 @@ import React, { useState } from "react";
 
 const ToDoList = () => {
 
-
-    const [homework, setHomework] = useState ("")
-
-    const tasks = ['Llevar a Ramon al Veterinario', 'Comprar croquetas', 'Limpiar el arenero']
-
-    function getHomework (e) {
-        console.log(e.target.value)
-        setHomework (e.target.value)
+    function addTask () {
+        setTasks([...tasks, input])
+        
     }
 
+    const[input, setInput] = useState("")
+
+    const [tasks, setTasks] = useState (['Tarea 01', 'Tarea 02', 'Tarea 03'])
+
+    function oprimioTecla (e) {
+        if (e.keyCode == 13) {
+            console.log("Se apreto Enter")
+        }
+    }
+
+
     return (
-        <div className="mb-3 m-5">
-            <label htmlFor="inputHomework" className="form-label fs-2">To-do List</label>
-            <p> { tasks.map } </p>
-            <input type="text" value={homework} onChange={getHomework} className="form-control" id="inputHomework" placeholder="Add a task"/>
-            <button className="mt-3">Agregar</button>
-        </div>
+        <>
+            <h1>To-Do List</h1>
+            <div>{tasks.map((tarea, index) => <p key={index}> {tarea} </p>)}</div>
+
+            <input className="form-control my-3" type="text" onKeyDown={oprimioTecla} placeholder="Nueva Tarea" value={input} onChange={ (e) => {
+             console.log(e.target.value)
+             setInput(e.target.value)
+            }} ></input>
+
+            <button className="btn btn-primary" onClick={ addTask }>Agregar tarea</button>
+
+            <p>Total de tareas: {tasks.length}</p>
+        </>
     )
 }
 
