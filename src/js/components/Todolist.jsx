@@ -25,13 +25,17 @@ const ToDoList = () => {
                 <div className="row justify-content-center">
                     <div className="col-12 col-md-8 col-lg-6">
                         <div className="card shadow-sm">
-                            <div className="card-body p-4">
+                            <div className="p-4">
                                 <div className="d-flex align-items-center justify-content-between mb-3">
+                                    
                                     <h1 className="h3 mb-0">To-Do List</h1>
+
                                 </div>
 
                             <div className="input-group mb-3">
+
                                 <input className="form-control" type="text" placeholder="Nueva tarea" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={oprimioEnter} />
+                                
                             </div>
 
                             <ul className="list-group">
