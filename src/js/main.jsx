@@ -11,9 +11,10 @@ import '../styles/index.css'
 // components
 import Home from './components/Home';
 import ToDoList from './components/Todolist';
+import GetData  from './components/GetData'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ToDoList/>
+    <GetData />
   </React.StrictMode>,
 )

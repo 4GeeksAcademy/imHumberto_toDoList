@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ToDoList = () => {
 
@@ -7,9 +7,17 @@ const ToDoList = () => {
         
     }
 
+    function deleteTask () {
+        console.log("Delete Task" )
+    }
+
     const[input, setInput] = useState("")
 
     const [tasks, setTasks] = useState (['Tarea 01', 'Tarea 02', 'Tarea 03'])
+
+    useEffect ( () => {
+        console.log("Tasks cambio")
+    }, [tasks])
 
     function oprimioEnter (e) {
         if (e.keyCode == 13 || e.key === "Enter") {
@@ -42,7 +50,7 @@ const ToDoList = () => {
                                 {tasks.map((tarea, index) => (
                                 <li key={index} className="list-group-item d-flex align-items-center justify-content-between">
                                     
-                                    <span className="d-flex align-items-center gap-2"> <span className="badge text-bg-light border">#{index + 1} </span> { tarea }</span>
+                                    <span className="d-flex align-items-center gap-2"> <span className="badge text-bg-light border">{index + 1}</span> { tarea }</span> <button type="button" className="btn btn-sm" onClick={deleteTask}>❌</button>
 
                                 </li>
                                 ))}
