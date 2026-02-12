@@ -15,6 +15,6 @@ import GetData  from './components/GetData'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GetData />
+    <ToDoList />
   </React.StrictMode>,
 )
